@@ -72,11 +72,9 @@ function HangMan {
 
 }
 
-$PathToRepo = Read-Host "Full path to repo? Ex: 'C:\Users\Emil\PSHangMan'"
-
 do {
     try {
-        $TheSecret = Import-Csv "$PathToRepo\Secrets.csv" -Delimiter ";"
+        $TheSecret = Import-Csv "$((Get-Location).path)\Secrets.csv" -Delimiter ";"
         $TheSecret = Get-Random $TheSecret
         $Tiles = @()
         $Rules = "Welcome to PSHangMan. Standard hangman rules.`nSelections can only be 1 character.`nIf multiple is entered, the first one will be picked.`nEmpty selections will count as a wrong answer.`nGood luck. Hint: Tech companies."
@@ -85,8 +83,15 @@ do {
         }
     }
     catch {
-        $Error[0]
-        Write-Warning "CSV file with the secrets must be placed in '$($home)\myScripts\Misc\Scripts\Secrets.csv'"
+        try {
+        Write-Warning "Did not find the CSV, tried looking here: "$((Get-Location).path)\Secrets.csv" ; please retry"
+        $PathToRepo = Read-Host "Full path to repo? Ex: 'C:\Users\Emil\PSHangMan'"
+        $TheSecret = Import-Csv "$PathToRepo\Secrets.csv" -Delimiter ";"
+        } catch {
+            "Run it from it's origin path. Like this PS> .\PSHangMan.ps1"
+            break;
+        }
+        
     }
 
     [int]$MaxStage = 6
