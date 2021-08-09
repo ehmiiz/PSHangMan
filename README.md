@@ -5,3 +5,5 @@
 4. If you think there's not enough secrets, don't get upset - add more or add an issue to the repo with suggestions!  
   
 ![](PSHangMan.gif)
+
+## Works in PowerShell 3+ and PS7 on Linux
