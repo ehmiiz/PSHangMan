@@ -24,13 +24,13 @@ GUID = 'eb2b4f28-ac4a-4500-84a2-fbd71f174894'
 Author = 'Ehmiiz'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'Ehmiiz'
 
 # Copyright statement for this module
 Copyright = 'Have at it'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'The famous game Hang Man, right in your PowerShell host! With tech-companies theme.'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
