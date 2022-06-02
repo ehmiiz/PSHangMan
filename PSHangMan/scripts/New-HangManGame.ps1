@@ -1,7 +1,7 @@
 function New-HangManGame {
     do {
         try {
-            $TheSecret = Import-Csv "$((Get-Location).path)\Secrets.csv" -Delimiter ";"
+            $TheSecret = Import-Csv "$PSScriptRoot\Secrets.csv" -Delimiter ";"
             $TheSecret = Get-Random $TheSecret
             $Tiles = @()
             $Rules = "Welcome to PSHangMan. Standard hangman rules.`nSelections can only be 1 character.`nIf multiple is entered, the first one will be picked.`nEmpty selections will count as a wrong answer.`nGood luck. Hint: Tech companies."
@@ -11,10 +11,11 @@ function New-HangManGame {
         }
         catch {
             try {
-            Write-Warning "Did not find the CSV, tried looking here: "$((Get-Location).path)\Secrets.csv" ; please retry"
+            Write-Warning "Did not find the CSV, tried looking here: "$PSScriptRoot\Secrets.csv" ; please retry"
             $PathToRepo = Read-Host "Full path to repo? Ex: 'C:\Users\Emil\PSHangMan'"
             $TheSecret = Import-Csv "$PathToRepo\Secrets.csv" -Delimiter ";"
             } catch {
+                "Did not find: $PSScriptRoot\Secrets.csv"
                 "Run it from it's origin path. Like this PS> .\PSHangMan.ps1"
                 break;
             }
