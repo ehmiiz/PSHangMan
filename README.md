@@ -5,7 +5,7 @@ Install-Module -Name 'PSHangMan' -Repository PSGallery
 ```
 2. run: 
 ```powershell
-New-HangManGame
+Import-Module 'PSHangMan'; New-HangManGame
 ```
 3. Have fun!
 
